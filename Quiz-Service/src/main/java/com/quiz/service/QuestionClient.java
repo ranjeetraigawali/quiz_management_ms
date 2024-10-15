@@ -9,7 +9,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-@FeignClient(url = "http://localhost:8082", value = "Question-Client")
+/**
+ * For normal application -
+ * @FeignClient(url = "http://localhost:8082", value = "Question-Client") **/
+
+/**
+ * When we have service registry / discovery server enabled.
+ */
+
+@FeignClient(name = "Question-Service")
 public interface QuestionClient {
 
     @GetMapping("/question/quiz/{quizId}")

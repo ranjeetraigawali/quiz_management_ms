@@ -1,10 +1,9 @@
 server:
   port:
-    8082
-
+    8092
 spring:
   application:
-    name: quiz-service
+    name: question-service
   datasource:
     username: postgres
     url: jdbc:postgresql://localhost:5432/quiz_management_system
