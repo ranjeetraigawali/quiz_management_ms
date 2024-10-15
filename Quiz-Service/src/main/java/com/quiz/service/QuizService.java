@@ -4,7 +4,6 @@ import com.quiz.entity.Quiz;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public interface QuizService {
@@ -12,5 +11,5 @@ public interface QuizService {
 
     List<Quiz> getAll();
 
-    Optional<Quiz> getQuiz(Long id);
+    Quiz getQuiz(Long id);
 }
