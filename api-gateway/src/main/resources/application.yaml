@@ -1,0 +1,17 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: api-gateway
+# routing configurations
+  cloud:
+    gateway:
+      routes:
+        - id: quiz-service
+          predicates:
+              - Path=/quiz/**
+          uri: lb://quiz-service
+        - id: question-service
+          predicates:
+              - Path=/question/**
+          uri: lb://question-service
