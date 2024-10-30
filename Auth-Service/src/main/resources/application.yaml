@@ -1,0 +1,18 @@
+server:
+  port:
+    8083
+spring:
+  application:
+    name: question-service
+  datasource:
+    username: postgres
+    url: jdbc:postgresql://localhost:5432/quiz_management_system
+    password: Ranjeet
+    jpa:
+      hibernate:
+        ddl-auto: update
+        show-sql: true
+security:
+  jwt:
+    secret-key: 47dea65ccfc4b532a2cbeb2ea2636656a849ca658e70119d05adf2b4cd2f67b8
+    expiration-time: 3600000
