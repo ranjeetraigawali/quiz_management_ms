@@ -6,7 +6,6 @@ import com.authentication.entity.User;
 
 public interface AuthenticationService {
     User signUp(RegisterUser registerUser);
-
     User authenticate(LoginUser loginUser);
-
+    Boolean isUserLoggedIn();
 }

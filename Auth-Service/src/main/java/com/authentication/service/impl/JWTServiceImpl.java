@@ -68,6 +68,13 @@ public class JWTServiceImpl implements JWTService {
         return extractClaim(token, Claims::getExpiration);
     }
 
+    public void validateToken(final String token) {
+        Jwts.parserBuilder()
+                .setSigningKey(getSignInKey())
+                .build()
+                .parseClaimsJws(token);
+    }
+
     private Claims extractAllClaims(String token) {
         return Jwts
                 .parserBuilder()

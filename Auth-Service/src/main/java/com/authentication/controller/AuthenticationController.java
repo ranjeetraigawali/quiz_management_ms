@@ -5,13 +5,11 @@ import com.authentication.dto.LoginUser;
 import com.authentication.dto.RegisterUser;
 import com.authentication.entity.User;
 import com.authentication.service.AuthenticationService;
-import com.authentication.service.impl.AuthenticationServiceImpl;
 import com.authentication.service.impl.JWTServiceImpl;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
@@ -38,5 +36,16 @@ public class AuthenticationController {
         loginResponse.setToken(jwtToken);
         loginResponse.setExpiresIn(jwtService.getExpirationTime());
         return ResponseEntity.ok(loginResponse);
+    }
+
+    @GetMapping("/validate")
+    public String validateToken(@RequestParam("token") String token) {
+        jwtService.validateToken(token);
+        return "Token is valid";
+    }
+
+    @GetMapping("/authenticatedUser")
+    public Boolean isUserLoggedIn() {
+        return authenticationService.isUserLoggedIn();
     }
 }
